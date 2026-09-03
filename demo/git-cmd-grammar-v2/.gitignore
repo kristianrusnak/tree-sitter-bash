@@ -1,0 +1,6 @@
+node_modules/
+build/
+prebuilds/
+parser.so
+*.wasm
+pipeline/cache/

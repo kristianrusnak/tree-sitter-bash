@@ -1,0 +1,171 @@
+====================================
+plain commit, no options
+====================================
+
+git commit
+
+---
+
+(source_file
+  (git_command
+    (subcommand)))
+
+====================================
+boolean subcommand options
+====================================
+
+git commit -a -v
+
+---
+
+(source_file
+  (git_command
+    (subcommand)
+    (subcommand_option)
+    (subcommand_option)))
+
+====================================
+space-attached subcommand option value (-m "msg")
+====================================
+
+git commit -m "msg"
+
+---
+
+(source_file
+  (git_command
+    (subcommand)
+    (subcommand_option
+      (word))))
+
+====================================
+equals-attached long option (--author=<name>)
+====================================
+
+git commit --author=Alice
+
+---
+
+(source_file
+  (git_command
+    (subcommand)
+    (subcommand_option
+      (word))))
+
+====================================
+global option before subcommand (space-attached -C <path>)
+====================================
+
+git -C /repo commit -a
+
+---
+
+(source_file
+  (git_command
+    (global_option
+      (word))
+    (subcommand)
+    (subcommand_option)))
+
+====================================
+global option before subcommand (equals-attached --git-dir=<path>)
+====================================
+
+git --git-dir=/repo/.git commit -a
+
+---
+
+(source_file
+  (git_command
+    (global_option
+      (word))
+    (subcommand)
+    (subcommand_option)))
+
+====================================
+multiple global options before subcommand
+====================================
+
+git -c a.b=c --no-pager commit -v
+
+---
+
+(source_file
+  (git_command
+    (global_option
+      (word))
+    (global_option)
+    (subcommand)
+    (subcommand_option)))
+
+====================================
+DISAMBIGUATION: -C's argument value equals the subcommand name
+====================================
+
+git -C commit commit -m commit
+
+---
+
+(source_file
+  (git_command
+    (global_option
+      (word))
+    (subcommand)
+    (subcommand_option
+      (word))))
+
+====================================
+end-of-options marker then pathspec arguments
+====================================
+
+git commit -a -- file1.txt file2.txt
+
+---
+
+(source_file
+  (git_command
+    (subcommand)
+    (subcommand_option)
+    (end_of_options)
+    (pathspec)
+    (pathspec)))
+
+====================================
+optional-value option used bare (-u with no mode)
+====================================
+
+git commit -u
+
+---
+
+(source_file
+  (git_command
+    (subcommand)
+    (subcommand_option)))
+
+====================================
+optional-value option used glued, no separator (-uall)
+====================================
+
+git commit -uall
+
+---
+
+(source_file
+  (git_command
+    (subcommand)
+    (subcommand_option)))
+
+====================================
+optional-value option used with attached value (--gpg-sign=<keyid>)
+====================================
+
+git commit --gpg-sign=ABCD1234
+
+---
+
+(source_file
+  (git_command
+    (subcommand)
+    (subcommand_option
+      (word))))

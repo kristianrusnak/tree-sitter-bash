@@ -1,0 +1,480 @@
+[
+  {
+    "type": "git_command",
+    "named": true,
+    "fields": {
+      "end_of_options": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "end_of_options",
+            "named": true
+          }
+        ]
+      },
+      "global_option": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "global_option",
+            "named": true
+          }
+        ]
+      },
+      "option": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "subcommand_option",
+            "named": true
+          }
+        ]
+      },
+      "pathspec": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "pathspec",
+            "named": true
+          }
+        ]
+      },
+      "subcommand": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "subcommand",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "global_option",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "pathspec",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "git_command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "subcommand_option",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "--all",
+    "named": false
+  },
+  {
+    "type": "--allow-empty",
+    "named": false
+  },
+  {
+    "type": "--allow-empty-message",
+    "named": false
+  },
+  {
+    "type": "--amend",
+    "named": false
+  },
+  {
+    "type": "--attr-source",
+    "named": false
+  },
+  {
+    "type": "--author",
+    "named": false
+  },
+  {
+    "type": "--bare",
+    "named": false
+  },
+  {
+    "type": "--branch",
+    "named": false
+  },
+  {
+    "type": "--cleanup",
+    "named": false
+  },
+  {
+    "type": "--config-env",
+    "named": false
+  },
+  {
+    "type": "--date",
+    "named": false
+  },
+  {
+    "type": "--dry-run",
+    "named": false
+  },
+  {
+    "type": "--edit",
+    "named": false
+  },
+  {
+    "type": "--exec-path",
+    "named": false
+  },
+  {
+    "type": "--file",
+    "named": false
+  },
+  {
+    "type": "--fixup",
+    "named": false
+  },
+  {
+    "type": "--git-dir",
+    "named": false
+  },
+  {
+    "type": "--glob-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--gpg-sign",
+    "named": false
+  },
+  {
+    "type": "--help",
+    "named": false
+  },
+  {
+    "type": "--html-path",
+    "named": false
+  },
+  {
+    "type": "--icase-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--include",
+    "named": false
+  },
+  {
+    "type": "--info-path",
+    "named": false
+  },
+  {
+    "type": "--list-cmds",
+    "named": false
+  },
+  {
+    "type": "--literal-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--long",
+    "named": false
+  },
+  {
+    "type": "--man-path",
+    "named": false
+  },
+  {
+    "type": "--message",
+    "named": false
+  },
+  {
+    "type": "--namespace",
+    "named": false
+  },
+  {
+    "type": "--no-advice",
+    "named": false
+  },
+  {
+    "type": "--no-edit",
+    "named": false
+  },
+  {
+    "type": "--no-gpg-sign",
+    "named": false
+  },
+  {
+    "type": "--no-lazy-fetch",
+    "named": false
+  },
+  {
+    "type": "--no-optional-locks",
+    "named": false
+  },
+  {
+    "type": "--no-pager",
+    "named": false
+  },
+  {
+    "type": "--no-post-rewrite",
+    "named": false
+  },
+  {
+    "type": "--no-replace-objects",
+    "named": false
+  },
+  {
+    "type": "--no-signoff",
+    "named": false
+  },
+  {
+    "type": "--no-status",
+    "named": false
+  },
+  {
+    "type": "--no-verify",
+    "named": false
+  },
+  {
+    "type": "--noglob-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--null",
+    "named": false
+  },
+  {
+    "type": "--only",
+    "named": false
+  },
+  {
+    "type": "--paginate",
+    "named": false
+  },
+  {
+    "type": "--patch",
+    "named": false
+  },
+  {
+    "type": "--pathspec-file-nul",
+    "named": false
+  },
+  {
+    "type": "--pathspec-from-file",
+    "named": false
+  },
+  {
+    "type": "--porcelain",
+    "named": false
+  },
+  {
+    "type": "--quiet",
+    "named": false
+  },
+  {
+    "type": "--reedit-message",
+    "named": false
+  },
+  {
+    "type": "--reset-author",
+    "named": false
+  },
+  {
+    "type": "--reuse-message",
+    "named": false
+  },
+  {
+    "type": "--short",
+    "named": false
+  },
+  {
+    "type": "--signoff",
+    "named": false
+  },
+  {
+    "type": "--squash",
+    "named": false
+  },
+  {
+    "type": "--status",
+    "named": false
+  },
+  {
+    "type": "--template",
+    "named": false
+  },
+  {
+    "type": "--trailer",
+    "named": false
+  },
+  {
+    "type": "--untracked-files",
+    "named": false
+  },
+  {
+    "type": "--verbose",
+    "named": false
+  },
+  {
+    "type": "--verify",
+    "named": false
+  },
+  {
+    "type": "--version",
+    "named": false
+  },
+  {
+    "type": "--work-tree",
+    "named": false
+  },
+  {
+    "type": "-C",
+    "named": false
+  },
+  {
+    "type": "-F",
+    "named": false
+  },
+  {
+    "type": "-P",
+    "named": false
+  },
+  {
+    "type": "-S",
+    "named": false
+  },
+  {
+    "type": "-a",
+    "named": false
+  },
+  {
+    "type": "-c",
+    "named": false
+  },
+  {
+    "type": "-e",
+    "named": false
+  },
+  {
+    "type": "-h",
+    "named": false
+  },
+  {
+    "type": "-i",
+    "named": false
+  },
+  {
+    "type": "-m",
+    "named": false
+  },
+  {
+    "type": "-n",
+    "named": false
+  },
+  {
+    "type": "-o",
+    "named": false
+  },
+  {
+    "type": "-p",
+    "named": false
+  },
+  {
+    "type": "-q",
+    "named": false
+  },
+  {
+    "type": "-s",
+    "named": false
+  },
+  {
+    "type": "-t",
+    "named": false
+  },
+  {
+    "type": "-u",
+    "named": false
+  },
+  {
+    "type": "-v",
+    "named": false
+  },
+  {
+    "type": "-z",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "end_of_options",
+    "named": true
+  },
+  {
+    "type": "git",
+    "named": false
+  },
+  {
+    "type": "pathspec",
+    "named": false
+  },
+  {
+    "type": "subcommand",
+    "named": true
+  },
+  {
+    "type": "word",
+    "named": true
+  }
+]
