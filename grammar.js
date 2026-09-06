@@ -8,6 +8,9 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const GIT_GLOBAL_OPTIONS = require('./src/git/global-options.json').options;
+const GIT_SUBCOMMAND_NAMES = require('./src/git/subcommands.json').subcommands;
+
 const SPECIAL_CHARACTERS = [
   '\'', '"',
   '<', '>',
@@ -146,6 +149,7 @@ module.exports = grammar({
       $.command,
       $.declaration_command,
       $.unset_command,
+      $.git_command,
       $.test_command,
       $.negated_command,
       $.for_statement,
@@ -166,6 +170,7 @@ module.exports = grammar({
       $.command,
       $.declaration_command,
       $.unset_command,
+      $.git_command,
       $.test_command,
       $.negated_command,
       $.for_statement,
@@ -472,6 +477,93 @@ module.exports = grammar({
       repeat(choice(
         $._literal,
         $._simple_variable_name,
+      )),
+    )),
+
+    // git_command: recognizes `git`-shaped invocations (bare `git`, a
+    // path-prefixed form like `/usr/bin/git`, or a Windows-style
+    // `C:\Git\bin\git.exe`) as a distinct node from the generic `command`,
+    // so that `git`'s subcommand can be exposed as a queryable field
+    // instead of being buried inside an undifferentiated argument list.
+    //
+    // Requires a trailing path separator before the literal `git`, so
+    // `xgit`/`mygit` never match (a bare, unprefixed `git` is also
+    // allowed). `prec(1, ...)` wins the lexer's longest-match tie against
+    // the generic `word` token wherever both match the same span (see
+    // `word` below); where `word` matches a strictly longer span (e.g.
+    // `gitk`), `word` wins on length alone and this token isn't a
+    // candidate at all.
+    _git_program_name: _ => token(prec(1, seq(
+      optional(seq(
+        repeat(choice(noneOf(...SPECIAL_CHARACTERS), seq('\\', noneOf('\\s')))),
+        choice('/', '\\'),
+      )),
+      'git',
+      optional('.exe'),
+    ))),
+
+    // git_option: one of git's global (pre-subcommand) flags, dict-driven
+    // from src/git/global-options.json. Arity controls the shape:
+    //  - `none` (boolean, e.g. --bare): a bare keyword-extracted literal.
+    //  - `required`, spaced (--git-dir /path): name and value get separate
+    //    fields, safe because the value starts fresh after whitespace.
+    //  - `required`/`optional`, attached (--git-dir=/path,
+    //    --exec-path=/path): `=` isn't a special character, so the generic
+    //    `word` token would otherwise always swallow the whole
+    //    `--flag=value` span whole. Modeled as one opaque,
+    //    boosted-precedence token per flag instead of a split name/value
+    //    pair — a deliberate, documented scope limit.
+    //  - `optional` also allows the bare form (e.g. --exec-path alone).
+    git_option: $ => choice(
+      ...GIT_GLOBAL_OPTIONS.filter(o => o.arity === 'none').map(o => o.name),
+      ...GIT_GLOBAL_OPTIONS.filter(o => o.arity === 'required').map(o => choice(
+        seq(field('name', o.name), field('value', $._literal)),
+        attachedValueToken(o.name),
+      )),
+      ...GIT_GLOBAL_OPTIONS.filter(o => o.arity === 'optional').map(o => choice(
+        o.name,
+        attachedValueToken(o.name),
+      )),
+    ),
+
+    // _git_dash_token: any `-`-prefixed word at the subcommand-level tail,
+    // e.g. `--oneline` or `-n`. Distinguishing this from a plain `argument`
+    // is deliberately shallow (subcommand-level option parsing is naive by
+    // design, see module doc) — it's just "starts with a literal dash",
+    // not validated against any per-subcommand flag vocabulary.
+    // `prec(1, ...)` wins the lexer's tie against generic `word` the same
+    // way `_git_program_name` does above.
+    _git_dash_token: _ => token(prec(1, seq(
+      '-',
+      repeat(choice(noneOf(...SPECIAL_CHARACTERS), seq('\\', noneOf('\\s')))),
+    ))),
+
+    // git_command's overall shape: an optional repeat of global options
+    // (each either a recognized git_option, or an `unresolved` literal —
+    // an unrecognized flag or stray token that doesn't stop the search),
+    // followed by an optional subcommand. The subcommand's own naive tail
+    // is nested *inside* `optional(seq(subcommand, ...))` as one unit
+    // rather than being a second always-present `repeat` alongside the
+    // hunting loop — both would otherwise accept the same `$._literal`
+    // terminal, leaving the parser unable to tell where "still hunting
+    // for the subcommand" ends and "naive tail" begins whenever no
+    // subcommand is ever found. With the tail gated behind an actually-
+    // found subcommand, the hunting loop is the only viable continuation
+    // when no subcommand appears, so `unresolved` is unambiguously the
+    // sole bucket for that case.
+    git_command: $ => prec.left(seq(
+      field('name', alias($._git_program_name, $.command_name)),
+      repeat(choice(
+        field('option', $.git_option),
+        field('unresolved', $._literal),
+      )),
+      optional(seq(
+        field('subcommand', alias(choice(...GIT_SUBCOMMAND_NAMES), $.git_subcommand)),
+        repeat(choice(
+          field('flag', alias($._git_dash_token, $.word)),
+          field('argument', $._literal),
+          field('redirect', $.herestring_redirect),
+        )),
       )),
     )),
 
@@ -1198,4 +1290,22 @@ function immediateLiterals(...literals) {
  */
 function tokenLiterals(precedence, ...literals) {
   return choice(...literals.map(l => token(prec(precedence, l))));
+}
+
+/**
+ * The attached `--flag=value` form of a git global option: `=` isn't a
+ * special character, so the generic `word` token would otherwise swallow
+ * the whole `--flag=value` span as one opaque word indistinguishable from
+ * any other. Modeled as one boosted-precedence token per flag (mirroring
+ * `word`'s own char classes for the value) so it wins the lexer's
+ * longest-match tie against plain `word`.
+ *
+ * @param {string} name
+ */
+function attachedValueToken(name) {
+  return token(prec(1, seq(
+    name,
+    '=',
+    repeat1(choice(noneOf(...SPECIAL_CHARACTERS), seq('\\', noneOf('\\s')))),
+  )));
 }

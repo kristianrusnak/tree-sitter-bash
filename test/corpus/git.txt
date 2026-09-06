@@ -1,0 +1,194 @@
+===============================
+Bare git
+===============================
+
+git
+
+---
+
+(program
+  (git_command
+    (command_name)))
+
+===============================
+git --version (option only, no subcommand)
+===============================
+
+git --version
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_option)))
+
+===============================
+Boolean global option with subcommand
+===============================
+
+git --bare commit -m x
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_option)
+    (git_subcommand)
+    (word)
+    (word)))
+
+===============================
+Required global option, spaced form, with subcommand
+===============================
+
+git --git-dir /tmp/x commit
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_option
+      (word))
+    (git_subcommand)))
+
+===============================
+Required global option, attached form, with subcommand
+===============================
+
+git --git-dir=/tmp/x commit
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_option)
+    (git_subcommand)))
+
+===============================
+Optional global option, attached form, with subcommand
+===============================
+
+git --exec-path=/usr/lib/git commit
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_option)
+    (git_subcommand)))
+
+===============================
+Optional global option, bare form, with subcommand
+===============================
+
+git --exec-path commit
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_option)
+    (git_subcommand)))
+
+===============================
+Rescue: unrecognized flag before a real subcommand
+===============================
+
+git --frotz log
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (word)
+    (git_subcommand)))
+
+===============================
+Give up: no subcommand ever found
+===============================
+
+git --frotz --plugh
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (word)
+    (word)))
+
+===============================
+Path-prefixed and .exe forms
+===============================
+
+/usr/bin/git status
+./git status
+C:\Git\bin\git.exe status
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand))
+  (git_command
+    (command_name)
+    (git_subcommand))
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+Quoted "git" and gitk stay plain commands
+===============================
+
+"git" status
+gitk
+/usr/bin/gitk
+
+---
+
+(program
+  (command
+    (command_name
+      (string
+        (string_content)))
+    (word))
+  (command
+    (command_name
+      (word)))
+  (command
+    (command_name
+      (word))))
+
+===============================
+Leading assignment/redirect stays a plain command (documented limitation)
+===============================
+
+VAR=x git status
+2>&1 git status
+
+---
+
+(program
+  (command
+    (variable_assignment
+      (variable_name)
+      (word))
+    (command_name
+      (word))
+    (word))
+  (command
+    (file_redirect
+      (file_descriptor)
+      (number))
+    (command_name
+      (word))
+    (word)))

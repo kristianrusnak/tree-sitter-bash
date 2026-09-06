@@ -124,6 +124,10 @@
         "named": true
       },
       {
+        "type": "git_command",
+        "named": true
+      },
+      {
         "type": "if_statement",
         "named": true
       },
@@ -882,7 +886,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "_primary_expression",
@@ -1389,6 +1393,152 @@
           },
           {
             "type": "herestring_redirect",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "git_command",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_primary_expression",
+            "named": true
+          },
+          {
+            "type": "concatenation",
+            "named": true
+          }
+        ]
+      },
+      "flag": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "command_name",
+            "named": true
+          }
+        ]
+      },
+      "option": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "git_option",
+            "named": true
+          }
+        ]
+      },
+      "redirect": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "herestring_redirect",
+            "named": true
+          }
+        ]
+      },
+      "subcommand": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "git_subcommand",
+            "named": true
+          }
+        ]
+      },
+      "unresolved": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_primary_expression",
+            "named": true
+          },
+          {
+            "type": "concatenation",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "git_option",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "--attr-source",
+            "named": false
+          },
+          {
+            "type": "--config-env",
+            "named": false
+          },
+          {
+            "type": "--git-dir",
+            "named": false
+          },
+          {
+            "type": "--list-cmds",
+            "named": false
+          },
+          {
+            "type": "--namespace",
+            "named": false
+          },
+          {
+            "type": "--shallow-file",
+            "named": false
+          },
+          {
+            "type": "--work-tree",
+            "named": false
+          },
+          {
+            "type": "-C",
+            "named": false
+          },
+          {
+            "type": "-c",
+            "named": false
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_primary_expression",
+            "named": true
+          },
+          {
+            "type": "concatenation",
             "named": true
           }
         ]
@@ -2487,7 +2637,115 @@
     "named": false
   },
   {
+    "type": "--attr-source",
+    "named": false
+  },
+  {
+    "type": "--bare",
+    "named": false
+  },
+  {
+    "type": "--config-env",
+    "named": false
+  },
+  {
+    "type": "--exec-path",
+    "named": false
+  },
+  {
+    "type": "--git-dir",
+    "named": false
+  },
+  {
+    "type": "--glob-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--help",
+    "named": false
+  },
+  {
+    "type": "--html-path",
+    "named": false
+  },
+  {
+    "type": "--icase-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--info-path",
+    "named": false
+  },
+  {
+    "type": "--list-cmds",
+    "named": false
+  },
+  {
+    "type": "--literal-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--man-path",
+    "named": false
+  },
+  {
+    "type": "--namespace",
+    "named": false
+  },
+  {
+    "type": "--no-advice",
+    "named": false
+  },
+  {
+    "type": "--no-lazy-fetch",
+    "named": false
+  },
+  {
+    "type": "--no-literal-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--no-optional-locks",
+    "named": false
+  },
+  {
+    "type": "--no-pager",
+    "named": false
+  },
+  {
+    "type": "--no-replace-objects",
+    "named": false
+  },
+  {
+    "type": "--noglob-pathspecs",
+    "named": false
+  },
+  {
+    "type": "--paginate",
+    "named": false
+  },
+  {
+    "type": "--shallow-file",
+    "named": false
+  },
+  {
+    "type": "--version",
+    "named": false
+  },
+  {
+    "type": "--work-tree",
+    "named": false
+  },
+  {
     "type": "-=",
+    "named": false
+  },
+  {
+    "type": "-C",
+    "named": false
+  },
+  {
+    "type": "-P",
     "named": false
   },
   {
@@ -2495,7 +2753,23 @@
     "named": false
   },
   {
+    "type": "-c",
+    "named": false
+  },
+  {
+    "type": "-h",
+    "named": false
+  },
+  {
     "type": "-o",
+    "named": false
+  },
+  {
+    "type": "-p",
+    "named": false
+  },
+  {
+    "type": "-v",
     "named": false
   },
   {
@@ -2774,6 +3048,10 @@
   {
     "type": "function",
     "named": false
+  },
+  {
+    "type": "git_subcommand",
+    "named": true
   },
   {
     "type": "heredoc_content",

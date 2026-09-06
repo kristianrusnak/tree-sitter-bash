@@ -54,3 +54,12 @@
   (command (_) @constant)
   (#match? @constant "^-")
 )
+
+(git_subcommand) @function.method
+
+(git_option) @constant
+
+(
+  (git_command (_) @constant)
+  (#match? @constant "^-")
+)

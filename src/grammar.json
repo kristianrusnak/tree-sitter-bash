@@ -114,6 +114,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "git_command"
+        },
+        {
+          "type": "SYMBOL",
           "name": "test_command"
         },
         {
@@ -187,6 +191,10 @@
           {
             "type": "SYMBOL",
             "name": "unset_command"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "git_command"
           },
           {
             "type": "SYMBOL",
@@ -2282,6 +2290,1650 @@
                 }
               ]
             }
+          }
+        ]
+      }
+    },
+    "_git_program_name": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "/"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "\\"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": "git"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ".exe"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "git_option": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "--bare"
+        },
+        {
+          "type": "STRING",
+          "value": "--glob-pathspecs"
+        },
+        {
+          "type": "STRING",
+          "value": "--help"
+        },
+        {
+          "type": "STRING",
+          "value": "--html-path"
+        },
+        {
+          "type": "STRING",
+          "value": "--icase-pathspecs"
+        },
+        {
+          "type": "STRING",
+          "value": "--info-path"
+        },
+        {
+          "type": "STRING",
+          "value": "--literal-pathspecs"
+        },
+        {
+          "type": "STRING",
+          "value": "--man-path"
+        },
+        {
+          "type": "STRING",
+          "value": "--no-advice"
+        },
+        {
+          "type": "STRING",
+          "value": "--no-lazy-fetch"
+        },
+        {
+          "type": "STRING",
+          "value": "--no-literal-pathspecs"
+        },
+        {
+          "type": "STRING",
+          "value": "--no-optional-locks"
+        },
+        {
+          "type": "STRING",
+          "value": "--no-pager"
+        },
+        {
+          "type": "STRING",
+          "value": "--no-replace-objects"
+        },
+        {
+          "type": "STRING",
+          "value": "--noglob-pathspecs"
+        },
+        {
+          "type": "STRING",
+          "value": "--paginate"
+        },
+        {
+          "type": "STRING",
+          "value": "--version"
+        },
+        {
+          "type": "STRING",
+          "value": "-P"
+        },
+        {
+          "type": "STRING",
+          "value": "-h"
+        },
+        {
+          "type": "STRING",
+          "value": "-p"
+        },
+        {
+          "type": "STRING",
+          "value": "-v"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "--attr-source"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "--attr-source"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "--config-env"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "--config-env"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "--git-dir"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "--git-dir"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "--list-cmds"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "--list-cmds"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "--namespace"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "--namespace"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "--shallow-file"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "--shallow-file"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "--work-tree"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "--work-tree"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "-C"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "-C"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "name",
+                  "content": {
+                    "type": "STRING",
+                    "value": "-c"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "value",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "-c"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "--exec-path"
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "--exec-path"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "REPEAT1",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "PATTERN",
+                            "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                          },
+                          {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "STRING",
+                                "value": "\\"
+                              },
+                              {
+                                "type": "PATTERN",
+                                "value": "[^\\s]"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "_git_dash_token": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^'\"<>{}\\[\\]()`$|&;\\\\\\s]"
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "\\"
+                      },
+                      {
+                        "type": "PATTERN",
+                        "value": "[^\\s]"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "git_command": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "name",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_git_program_name"
+              },
+              "named": true,
+              "value": "command_name"
+            }
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "option",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "git_option"
+                  }
+                },
+                {
+                  "type": "FIELD",
+                  "name": "unresolved",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_literal"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "subcommand",
+                    "content": {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "add"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "am"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "annotate"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "apply"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "archimport"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "archive"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "backfill"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "bisect"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "blame"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "branch"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "bugreport"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "bundle"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "cat-file"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "check-attr"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "check-ignore"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "check-mailmap"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "check-ref-format"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "checkout"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "checkout-index"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "cherry"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "cherry-pick"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "citool"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "clean"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "clone"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "column"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "commit"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "commit-graph"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "commit-tree"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "config"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "count-objects"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "credential"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "credential-cache"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "credential-store"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "cvsexportcommit"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "cvsimport"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "cvsserver"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "daemon"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "describe"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "diagnose"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "diff"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "diff-files"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "diff-index"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "diff-pairs"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "diff-tree"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "difftool"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "fast-export"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "fast-import"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "fetch"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "fetch-pack"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "filter-branch"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "fmt-merge-msg"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "for-each-ref"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "for-each-repo"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "format-patch"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "format-rev"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "fsck"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "gc"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "get-tar-commit-id"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "grep"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "gui"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "hash-object"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "help"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "history"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "hook"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "http-backend"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "http-fetch"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "http-push"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "imap-send"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "index-pack"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "init"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "instaweb"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "interpret-trailers"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "last-modified"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "log"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "ls-files"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "ls-remote"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "ls-tree"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "mailinfo"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "mailsplit"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "maintenance"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "merge"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "merge-base"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "merge-file"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "merge-index"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "merge-one-file"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "merge-tree"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "mergetool"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "mktag"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "mktree"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "multi-pack-index"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "mv"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "name-rev"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "notes"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "p4"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "pack-objects"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "pack-redundant"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "pack-refs"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "patch-id"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "prune"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "prune-packed"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "pull"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "push"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "quiltimport"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "range-diff"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "read-tree"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "rebase"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "receive-pack"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "reflog"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "refs"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "remote"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "repack"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "replace"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "replay"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "repo"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "request-pull"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "rerere"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "reset"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "restore"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "rev-list"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "rev-parse"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "revert"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "rm"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "send-email"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "send-pack"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "sh-i18n"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "sh-setup"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "shell"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "shortlog"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "show"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "show-branch"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "show-index"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "show-ref"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "sparse-checkout"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "stage"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "stash"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "status"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "stripspace"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "submodule"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "svn"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "switch"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "symbolic-ref"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "tag"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "unpack-file"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "unpack-objects"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "update-index"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "update-ref"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "update-server-info"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "upload-archive"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "upload-pack"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "url-parse"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "var"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "verify-commit"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "verify-pack"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "verify-tag"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "version"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "whatchanged"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "worktree"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "write-tree"
+                          }
+                        ]
+                      },
+                      "named": true,
+                      "value": "git_subcommand"
+                    }
+                  },
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "FIELD",
+                          "name": "flag",
+                          "content": {
+                            "type": "ALIAS",
+                            "content": {
+                              "type": "SYMBOL",
+                              "name": "_git_dash_token"
+                            },
+                            "named": true,
+                            "value": "word"
+                          }
+                        },
+                        {
+                          "type": "FIELD",
+                          "name": "argument",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "_literal"
+                          }
+                        },
+                        {
+                          "type": "FIELD",
+                          "name": "redirect",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "herestring_redirect"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         ]
       }

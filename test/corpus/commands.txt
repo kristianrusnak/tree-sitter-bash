@@ -27,10 +27,9 @@ levar
     (command_name
       (word))
     (word))
-  (command
-    (command_name
-      (word))
-    (word)
+  (git_command
+    (command_name)
+    (git_subcommand)
     (word)
     (word)
     (word)

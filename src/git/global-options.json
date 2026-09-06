@@ -1,0 +1,132 @@
+{
+  "_meta": {
+    "sourceTag": "v2.55.0",
+    "scrapedAt": "2026-09-05"
+  },
+  "options": [
+    {
+      "name": "--attr-source",
+      "arity": "required"
+    },
+    {
+      "name": "--bare",
+      "arity": "none"
+    },
+    {
+      "name": "--config-env",
+      "arity": "required"
+    },
+    {
+      "name": "--exec-path",
+      "arity": "optional"
+    },
+    {
+      "name": "--git-dir",
+      "arity": "required"
+    },
+    {
+      "name": "--glob-pathspecs",
+      "arity": "none"
+    },
+    {
+      "name": "--help",
+      "arity": "none"
+    },
+    {
+      "name": "--html-path",
+      "arity": "none"
+    },
+    {
+      "name": "--icase-pathspecs",
+      "arity": "none"
+    },
+    {
+      "name": "--info-path",
+      "arity": "none"
+    },
+    {
+      "name": "--list-cmds",
+      "arity": "required"
+    },
+    {
+      "name": "--literal-pathspecs",
+      "arity": "none"
+    },
+    {
+      "name": "--man-path",
+      "arity": "none"
+    },
+    {
+      "name": "--namespace",
+      "arity": "required"
+    },
+    {
+      "name": "--no-advice",
+      "arity": "none"
+    },
+    {
+      "name": "--no-lazy-fetch",
+      "arity": "none"
+    },
+    {
+      "name": "--no-literal-pathspecs",
+      "arity": "none"
+    },
+    {
+      "name": "--no-optional-locks",
+      "arity": "none"
+    },
+    {
+      "name": "--no-pager",
+      "arity": "none"
+    },
+    {
+      "name": "--no-replace-objects",
+      "arity": "none"
+    },
+    {
+      "name": "--noglob-pathspecs",
+      "arity": "none"
+    },
+    {
+      "name": "--paginate",
+      "arity": "none"
+    },
+    {
+      "name": "--shallow-file",
+      "arity": "required"
+    },
+    {
+      "name": "--version",
+      "arity": "none"
+    },
+    {
+      "name": "--work-tree",
+      "arity": "required"
+    },
+    {
+      "name": "-C",
+      "arity": "required"
+    },
+    {
+      "name": "-P",
+      "arity": "none"
+    },
+    {
+      "name": "-c",
+      "arity": "required"
+    },
+    {
+      "name": "-h",
+      "arity": "none"
+    },
+    {
+      "name": "-p",
+      "arity": "none"
+    },
+    {
+      "name": "-v",
+      "arity": "none"
+    }
+  ]
+}

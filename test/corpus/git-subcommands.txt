@@ -1,0 +1,2053 @@
+===============================
+git add
+===============================
+
+git add
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git am
+===============================
+
+git am
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git annotate
+===============================
+
+git annotate
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git apply
+===============================
+
+git apply
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git archimport
+===============================
+
+git archimport
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git archive
+===============================
+
+git archive
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git backfill
+===============================
+
+git backfill
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git bisect
+===============================
+
+git bisect
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git blame
+===============================
+
+git blame
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git branch
+===============================
+
+git branch
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git bugreport
+===============================
+
+git bugreport
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git bundle
+===============================
+
+git bundle
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git cat-file
+===============================
+
+git cat-file
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git check-attr
+===============================
+
+git check-attr
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git check-ignore
+===============================
+
+git check-ignore
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git check-mailmap
+===============================
+
+git check-mailmap
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git check-ref-format
+===============================
+
+git check-ref-format
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git checkout
+===============================
+
+git checkout
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git checkout-index
+===============================
+
+git checkout-index
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git cherry
+===============================
+
+git cherry
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git cherry-pick
+===============================
+
+git cherry-pick
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git citool
+===============================
+
+git citool
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git clean
+===============================
+
+git clean
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git clone
+===============================
+
+git clone
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git column
+===============================
+
+git column
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git commit
+===============================
+
+git commit
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git commit-graph
+===============================
+
+git commit-graph
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git commit-tree
+===============================
+
+git commit-tree
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git config
+===============================
+
+git config
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git count-objects
+===============================
+
+git count-objects
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git credential
+===============================
+
+git credential
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git credential-cache
+===============================
+
+git credential-cache
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git credential-store
+===============================
+
+git credential-store
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git cvsexportcommit
+===============================
+
+git cvsexportcommit
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git cvsimport
+===============================
+
+git cvsimport
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git cvsserver
+===============================
+
+git cvsserver
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git daemon
+===============================
+
+git daemon
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git describe
+===============================
+
+git describe
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git diagnose
+===============================
+
+git diagnose
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git diff
+===============================
+
+git diff
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git diff-files
+===============================
+
+git diff-files
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git diff-index
+===============================
+
+git diff-index
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git diff-pairs
+===============================
+
+git diff-pairs
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git diff-tree
+===============================
+
+git diff-tree
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git difftool
+===============================
+
+git difftool
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git fast-export
+===============================
+
+git fast-export
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git fast-import
+===============================
+
+git fast-import
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git fetch
+===============================
+
+git fetch
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git fetch-pack
+===============================
+
+git fetch-pack
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git filter-branch
+===============================
+
+git filter-branch
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git fmt-merge-msg
+===============================
+
+git fmt-merge-msg
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git for-each-ref
+===============================
+
+git for-each-ref
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git for-each-repo
+===============================
+
+git for-each-repo
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git format-patch
+===============================
+
+git format-patch
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git format-rev
+===============================
+
+git format-rev
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git fsck
+===============================
+
+git fsck
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git gc
+===============================
+
+git gc
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git get-tar-commit-id
+===============================
+
+git get-tar-commit-id
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git grep
+===============================
+
+git grep
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git gui
+===============================
+
+git gui
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git hash-object
+===============================
+
+git hash-object
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git help
+===============================
+
+git help
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git history
+===============================
+
+git history
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git hook
+===============================
+
+git hook
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git http-backend
+===============================
+
+git http-backend
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git http-fetch
+===============================
+
+git http-fetch
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git http-push
+===============================
+
+git http-push
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git imap-send
+===============================
+
+git imap-send
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git index-pack
+===============================
+
+git index-pack
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git init
+===============================
+
+git init
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git instaweb
+===============================
+
+git instaweb
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git interpret-trailers
+===============================
+
+git interpret-trailers
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git last-modified
+===============================
+
+git last-modified
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git log
+===============================
+
+git log
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git ls-files
+===============================
+
+git ls-files
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git ls-remote
+===============================
+
+git ls-remote
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git ls-tree
+===============================
+
+git ls-tree
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git mailinfo
+===============================
+
+git mailinfo
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git mailsplit
+===============================
+
+git mailsplit
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git maintenance
+===============================
+
+git maintenance
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git merge
+===============================
+
+git merge
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git merge-base
+===============================
+
+git merge-base
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git merge-file
+===============================
+
+git merge-file
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git merge-index
+===============================
+
+git merge-index
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git merge-one-file
+===============================
+
+git merge-one-file
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git merge-tree
+===============================
+
+git merge-tree
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git mergetool
+===============================
+
+git mergetool
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git mktag
+===============================
+
+git mktag
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git mktree
+===============================
+
+git mktree
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git multi-pack-index
+===============================
+
+git multi-pack-index
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git mv
+===============================
+
+git mv
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git name-rev
+===============================
+
+git name-rev
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git notes
+===============================
+
+git notes
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git p4
+===============================
+
+git p4
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git pack-objects
+===============================
+
+git pack-objects
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git pack-redundant
+===============================
+
+git pack-redundant
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git pack-refs
+===============================
+
+git pack-refs
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git patch-id
+===============================
+
+git patch-id
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git prune
+===============================
+
+git prune
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git prune-packed
+===============================
+
+git prune-packed
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git pull
+===============================
+
+git pull
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git push
+===============================
+
+git push
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git quiltimport
+===============================
+
+git quiltimport
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git range-diff
+===============================
+
+git range-diff
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git read-tree
+===============================
+
+git read-tree
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git rebase
+===============================
+
+git rebase
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git receive-pack
+===============================
+
+git receive-pack
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git reflog
+===============================
+
+git reflog
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git refs
+===============================
+
+git refs
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git remote
+===============================
+
+git remote
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git repack
+===============================
+
+git repack
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git replace
+===============================
+
+git replace
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git replay
+===============================
+
+git replay
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git repo
+===============================
+
+git repo
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git request-pull
+===============================
+
+git request-pull
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git rerere
+===============================
+
+git rerere
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git reset
+===============================
+
+git reset
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git restore
+===============================
+
+git restore
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git rev-list
+===============================
+
+git rev-list
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git rev-parse
+===============================
+
+git rev-parse
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git revert
+===============================
+
+git revert
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git rm
+===============================
+
+git rm
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git send-email
+===============================
+
+git send-email
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git send-pack
+===============================
+
+git send-pack
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git sh-i18n
+===============================
+
+git sh-i18n
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git sh-setup
+===============================
+
+git sh-setup
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git shell
+===============================
+
+git shell
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git shortlog
+===============================
+
+git shortlog
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git show
+===============================
+
+git show
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git show-branch
+===============================
+
+git show-branch
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git show-index
+===============================
+
+git show-index
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git show-ref
+===============================
+
+git show-ref
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git sparse-checkout
+===============================
+
+git sparse-checkout
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git stage
+===============================
+
+git stage
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git stash
+===============================
+
+git stash
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git status
+===============================
+
+git status
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git stripspace
+===============================
+
+git stripspace
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git submodule
+===============================
+
+git submodule
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git svn
+===============================
+
+git svn
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git switch
+===============================
+
+git switch
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git symbolic-ref
+===============================
+
+git symbolic-ref
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git tag
+===============================
+
+git tag
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git unpack-file
+===============================
+
+git unpack-file
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git unpack-objects
+===============================
+
+git unpack-objects
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git update-index
+===============================
+
+git update-index
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git update-ref
+===============================
+
+git update-ref
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git update-server-info
+===============================
+
+git update-server-info
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git upload-archive
+===============================
+
+git upload-archive
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git upload-pack
+===============================
+
+git upload-pack
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git url-parse
+===============================
+
+git url-parse
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git var
+===============================
+
+git var
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git verify-commit
+===============================
+
+git verify-commit
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git verify-pack
+===============================
+
+git verify-pack
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git verify-tag
+===============================
+
+git verify-tag
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git version
+===============================
+
+git version
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git whatchanged
+===============================
+
+git whatchanged
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git worktree
+===============================
+
+git worktree
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
+
+===============================
+git write-tree
+===============================
+
+git write-tree
+
+---
+
+(program
+  (git_command
+    (command_name)
+    (git_subcommand)))
