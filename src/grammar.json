@@ -2479,7 +2479,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -2550,7 +2550,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -2621,7 +2621,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -2692,7 +2692,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -2763,7 +2763,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -2834,7 +2834,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -2905,7 +2905,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -2976,7 +2976,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -3047,7 +3047,7 @@
                   "name": "value",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -3155,6 +3155,203 @@
         }
       ]
     },
+    "_git_literal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_git_concatenation"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_git_primary_expression"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": -2,
+            "content": {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_special_character"
+              }
+            }
+          },
+          "named": true,
+          "value": "word"
+        }
+      ]
+    },
+    "_git_primary_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "raw_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "translated_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ansi_c_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expansion"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "simple_expansion"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command_substitution"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "process_substitution"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arithmetic_expansion"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "brace_expression"
+        }
+      ]
+    },
+    "_git_concatenation": {
+      "type": "ALIAS",
+      "content": {
+        "type": "PREC",
+        "value": -1,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_git_primary_expression"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_special_character"
+                  },
+                  "named": true,
+                  "value": "word"
+                }
+              ]
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_concat"
+                      },
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "`\\s*`"
+                        },
+                        "named": false,
+                        "value": "``"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_git_primary_expression"
+                      },
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_special_character"
+                        },
+                        "named": true,
+                        "value": "word"
+                      },
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_comment_word"
+                        },
+                        "named": true,
+                        "value": "word"
+                      },
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_bare_dollar"
+                        },
+                        "named": false,
+                        "value": "$"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_concat"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "$"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "named": true,
+      "value": "concatenation"
+    },
     "_git_dash_token": {
       "type": "TOKEN",
       "content": {
@@ -3233,7 +3430,7 @@
                   "name": "unresolved",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_literal"
+                    "name": "_git_literal"
                   }
                 }
               ]
@@ -3914,7 +4111,7 @@
                           "name": "argument",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_literal"
+                            "name": "_git_literal"
                           }
                         },
                         {

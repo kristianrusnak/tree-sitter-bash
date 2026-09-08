@@ -125,6 +125,64 @@ git --frotz --plugh
     (word)))
 
 ===============================
+Short boolean global option with subcommand
+===============================
+
+git -P log
+
+---
+
+(program
+  (git_command
+    name: (command_name)
+    option: (git_option)
+    subcommand: (git_subcommand)))
+
+===============================
+Short required global option, spaced form, with subcommand
+===============================
+
+git -C /tmp/repo push
+
+---
+
+(program
+  (git_command
+    name: (command_name)
+    option: (git_option
+      value: (word))
+    subcommand: (git_subcommand)))
+
+===============================
+Short flag in subcommand tail lands in the `flag` field, like a long one
+===============================
+
+git push -f
+
+---
+
+(program
+  (git_command
+    name: (command_name)
+    subcommand: (git_subcommand)
+    flag: (word)))
+
+===============================
+Short flag before a plain argument in the subcommand tail
+===============================
+
+git commit -am foo
+
+---
+
+(program
+  (git_command
+    name: (command_name)
+    subcommand: (git_subcommand)
+    flag: (word)
+    argument: (word)))
+
+===============================
 Path-prefixed and .exe forms
 ===============================
 

@@ -517,7 +517,7 @@ module.exports = grammar({
     git_option: $ => choice(
       ...GIT_GLOBAL_OPTIONS.filter(o => o.arity === 'none').map(o => o.name),
       ...GIT_GLOBAL_OPTIONS.filter(o => o.arity === 'required').map(o => choice(
-        seq(field('name', o.name), field('value', $._literal)),
+        seq(field('name', o.name), field('value', $._git_literal)),
         attachedValueToken(o.name),
       )),
       ...GIT_GLOBAL_OPTIONS.filter(o => o.arity === 'optional').map(o => choice(
@@ -525,6 +525,74 @@ module.exports = grammar({
         attachedValueToken(o.name),
       )),
     ),
+
+    // _git_literal: the same generic "any literal" fallback as `_literal`
+    // (word/string/number/expansion/...), but built without ever routing
+    // through `_primary_expression`'s `alias($.test_operator, $.word)`
+    // alternative — directly *or* transitively via `$.concatenation`
+    // (which also bottoms out in `_primary_expression`). `test_operator`
+    // is an *external* scanner token (see `externals` above): its
+    // implementation greedily accepts ANY bare `-<letters>` run followed
+    // by whitespace — regardless of which letters follow, since it was
+    // written for `[[ -f x ]]`-style unary test operators, not validated
+    // against a fixed vocabulary. Tree-sitter always lets the external
+    // scanner attempt a token before the internal DFA runs, for every
+    // parser state where that token is a valid symbol — so as soon as
+    // `test_operator` becomes *reachable* at a position (even indirectly,
+    // through `_literal` -> `concatenation`/`_primary_expression`), it
+    // wins the lex for things like `-C`, `-f`, `-m`, `-n` unconditionally,
+    // *before* the internal, prec(1)-boosted tokens below (`git_option`'s
+    // short-flag literals, `_git_dash_token`) ever get a chance to
+    // compete — that boost only breaks ties between two internal tokens,
+    // it cannot out-race an external one. An earlier version of this rule
+    // still listed `$.concatenation` directly and did *not* fix the bug,
+    // because `concatenation` itself unconditionally pulls
+    // `_primary_expression` (and so `test_operator`) back in; `_git_literal`
+    // must avoid that symbol at every level, not just its own top choice.
+    _git_literal: $ => choice(
+      $._git_concatenation,
+      $._git_primary_expression,
+      alias(prec(-2, repeat1($._special_character)), $.word),
+    ),
+
+    // _git_primary_expression: `_primary_expression`, minus the
+    // `alias($.test_operator, $.word)` alternative. See `_git_literal`.
+    _git_primary_expression: $ => choice(
+      $.word,
+      $.string,
+      $.raw_string,
+      $.translated_string,
+      $.ansi_c_string,
+      $.number,
+      $.expansion,
+      $.simple_expansion,
+      $.command_substitution,
+      $.process_substitution,
+      $.arithmetic_expansion,
+      $.brace_expression,
+    ),
+
+    // _git_concatenation: `concatenation`, with `_git_primary_expression`
+    // (test_operator-free) substituted for `_primary_expression`, aliased
+    // back to the same `$.concatenation` node type so the tree shape and
+    // `highlights.scm`/node-types stay identical to the non-git rule. See
+    // `_git_literal`.
+    _git_concatenation: $ => alias(prec(-1, seq(
+      choice(
+        $._git_primary_expression,
+        alias($._special_character, $.word),
+      ),
+      repeat1(seq(
+        choice($._concat, alias(/`\s*`/, '``')),
+        choice(
+          $._git_primary_expression,
+          alias($._special_character, $.word),
+          alias($._comment_word, $.word),
+          alias($._bare_dollar, '$'),
+        ),
+      )),
+      optional(seq($._concat, '$')),
+    )), $.concatenation),
 
     // _git_dash_token: any `-`-prefixed word at the subcommand-level tail,
     // e.g. `--oneline` or `-n`. Distinguishing this from a plain `argument`
@@ -555,13 +623,13 @@ module.exports = grammar({
       field('name', alias($._git_program_name, $.command_name)),
       repeat(choice(
         field('option', $.git_option),
-        field('unresolved', $._literal),
+        field('unresolved', $._git_literal),
       )),
       optional(seq(
         field('subcommand', alias(choice(...GIT_SUBCOMMAND_NAMES), $.git_subcommand)),
         repeat(choice(
           field('flag', alias($._git_dash_token, $.word)),
-          field('argument', $._literal),
+          field('argument', $._git_literal),
           field('redirect', $.herestring_redirect),
         )),
       )),
