@@ -1,5 +1,7 @@
 # Native `git_command` grammar extension for tree-sitter-bash
 
+> **Layout note (2026-09-14, modified by AI Kilo Code, used model gti-litellm/glm-5.3-flash):** the git extension was extracted from `grammar.js` into `grammars/git/git-grammar.js`; this document and its scripts/dictionaries were relocated into `grammars/git/` (one folder per grammar extension). Paths below have been updated accordingly.
+
 ## Context
 
 This fork (branch `git-extended`) will become a private dependency used for precision rules-matching/querying over bash scripts. The goal is to make `git` invocations first-class in the parse tree — instead of `git commit -m foo` producing an undifferentiated generic `command` node (indistinguishable from any other program invocation), the grammar should expose `git`'s global options and, above all, its **subcommand** as real, queryable node types. Subcommand-matching precision is the hard requirement this whole feature exists to satisfy — global-option precision matters but is secondary, and subcommand-level (`git log --oneline`-style) option parsing is deliberately naive/unstructured by explicit choice.
@@ -37,7 +39,7 @@ Alias this token to the existing `command_name` node (`field('name', alias($._gi
 
 ### 2. Global options (dict-driven, 3-way arity)
 
-`src/git/global-options.json` (scraped dict, see §4) is `require()`'d directly at the top of `grammar.js` — this repo has no precedent for loading JSON into the grammar, but `grammar.js` is plain Node re-evaluated fresh by every `tree-sitter generate` run, so this just works, no separate text-templating codegen step needed.
+`grammars/git/data/global-options.json` (scraped dict, see §4) is `require()`'d by `grammars/git/git-grammar.js`, whose rules `grammar.js` merges into the rules map (one folder per grammar extension under `grammars/`) — this repo has no precedent for loading JSON into the grammar, but `grammar.js` is plain Node re-evaluated fresh by every `tree-sitter generate` run, so this just works, no separate text-templating codegen step needed.
 
 Per-flag arity, generated as CFG alternatives (mirrors the existing `file_redirect` pattern at lines ~528-540, which already does "required vs optional trailing value" dispatch on a literal operator):
 
@@ -93,9 +95,9 @@ One real ambiguity was found and designed out during review: `optional(subcomman
 
 ### 4. JSON dict files + scraper (all in scope, per negotiated requirements)
 
-- `src/git/global-options.json` — array of `{ name, arity }` (arity: `none`/`required`/`optional`), scraped from `git.c`'s `handle_options` in the **latest stable tag** of `github/git/git`. Include `_meta.sourceTag`.
-- `src/git/subcommands.json` — flat array of ~150+ names from `command-list.txt`, **all categories** (main porcelain + ancillary + plumbing/low-level) per the negotiated requirement that plumbing commands (`cat-file`, `hash-object`, etc.) matter equally for rules-matching. Include `_meta.sourceTag`.
-- `script/git/scrape-git-dict.js` — re-runnable Node script (new `script/git/` subdir; the existing singular `script/` is scoped to real-world-corpus fetching, a different concern), fetches from a pinned tag (default: latest stable, overridable), rewrites both JSON files. Must assert the flags/subcommands vocabularies are start-character-disjoint (subcommands never start with `-`) — this disjointness is load-bearing for §3's "no conflicts needed" argument, so it's asserted, not just assumed.
+- `grammars/git/data/global-options.json` — array of `{ name, arity }` (arity: `none`/`required`/`optional`), scraped from `git.c`'s `handle_options` in the **latest stable tag** of `github/git/git`. Include `_meta.sourceTag`.
+- `grammars/git/data/subcommands.json` — flat array of ~150+ names from `command-list.txt`, **all categories** (main porcelain + ancillary + plumbing/low-level) per the negotiated requirement that plumbing commands (`cat-file`, `hash-object`, etc.) matter equally for rules-matching. Include `_meta.sourceTag`.
+- `grammars/git/script/scrape-git-dict.js` — re-runnable Node script (own `script/` subdir inside the extension folder; the repo-root `script/` is scoped to real-world-corpus fetching, a different concern), fetches from a pinned tag (default: latest stable, overridable), rewrites both JSON files. Must assert the flags/subcommands vocabularies are start-character-disjoint (subcommands never start with `-`) — this disjointness is load-bearing for §3's "no conflicts needed" argument, so it's asserted, not just assumed.
 
 ### 5. `queries/highlights.scm`
 
@@ -124,7 +126,7 @@ Both expected trees in `test/corpus/commands.txt` must be updated as part of thi
 
 ### 7. Staged implementation order (riskiest/most foundational first)
 
-1. **`src/git/*.json` + `script/git/scrape-git-dict.js` alone.** Zero grammar risk. Verify subcommand count ≥150, spot-check global options against `git.c`, run the disjointness assertion.
+1. **`grammars/git/data/*.json` + `grammars/git/script/scrape-git-dict.js` alone.** Zero grammar risk. Verify subcommand count ≥150, spot-check global options against `git.c`, run the disjointness assertion.
 2. **Detection token + bare-bones `git_command`** (name field only). Insert into both `_statement_not_subshell` and `_statement_not_pipeline` (lines ~142 and ~162, right after `$.unset_command` — these two near-duplicate lists must be kept in sync). Run `tree-sitter generate` + `tree-sitter test` immediately — first empirical validation of the whole precedence-tie-break design. Hand-written throwaway cases: bare `git`, `/usr/bin/git`, `./git`, `C:\Git\bin\git.exe`, and the negative cases `gitk`/`/usr/bin/gitk`/quoted `"git"` (must all stay plain `command`). Confirm no new `conflicts` entries were actually required.
 3. **Naive tail directly after `name`** (skip options/subcommand for now), plus the `assignment`/`redirect` prefix. Update `test/corpus/commands.txt` lines 19 and 83 now — first real regression, caught early.
 4. **Global-options repeat**, validated one arity form at a time (boolean, required-spaced, required-attached, optional-attached) with hand-written cases before wiring the full ~40-entry dict — the attached-form precedence-tie claim is the second empirical checkpoint.
@@ -138,7 +140,7 @@ Do **not** preemptively add speculative `conflicts` entries (e.g. `[$.command, $
 
 ### 8. Corpus test generation strategy
 
-- **Scripted bulk coverage**: `script/git/generate-subcommand-corpus.js`, reads `src/git/subcommands.json`, emits `test/corpus/git-subcommands.txt` (one minimal `git <subcommand>` case per dict entry) in this repo's exact corpus format (`====`/title/`====`, blank, source, `----`, blank, S-expression tree — verified directly from `test/corpus/statements.txt` lines 1766-1786; no `:skip`/`:platform` attribute convention exists here). Committing the *script* (not just its output) keeps future dict re-scrapes and corpus regeneration in the same maintenance step.
+- **Scripted bulk coverage**: `grammars/git/script/generate-subcommand-corpus.js`, reads `grammars/git/data/subcommands.json`, emits `test/corpus/git-subcommands.txt` (one minimal `git <subcommand>` case per dict entry) in this repo's exact corpus format (`====`/title/`====`, blank, source, `----`, blank, S-expression tree — verified directly from `test/corpus/statements.txt` lines 1766-1786; no `:skip`/`:platform` attribute convention exists here). Committing the *script* (not just its output) keeps future dict re-scrapes and corpus regeneration in the same maintenance step.
 - **Hand-written edge cases**: `test/corpus/git.txt` — bare `git`, `git --version` (no subcommand), each arity form combined with a subcommand, the rescue scenario, the give-up/fully-unresolved scenario, path-prefixed/`.exe` forms, quoted `"git"` and `gitk`/`/usr/bin/gitk` (must stay plain `command`), and the `VAR=x git ...`/redirect-prefix cases.
 
 ## Node/field name summary
@@ -159,9 +161,10 @@ Do **not** preemptively add speculative `conflicts` entries (e.g. `[$.command, $
 
 ## Critical files
 
-- `grammar.js` — `_git_program_name`/`_git_dash_token` tokens, `git_option`/`git_command`/`git_subcommand` rules, insertion into `_statement_not_subshell`/`_statement_not_pipeline`
-- `src/git/global-options.json`, `src/git/subcommands.json` — scraped dicts
-- `script/git/scrape-git-dict.js`, `script/git/generate-subcommand-corpus.js`
+- `grammars/git/git-grammar.js` — `_git_program_name`/`_git_dash_token` tokens, `git_option`/`git_command`/`git_subcommand` rules (extracted out of `grammar.js`; merged into the rules map between `unset_command` and `command`)
+- `grammar.js` — only the wiring stays here: the extension `require`, the `$.git_command` entries in `_statement_not_subshell`/`_statement_not_pipeline`, and the `...gitGrammar(SPECIAL_CHARACTERS, noneOf)` spread (kept minimal for conflict-free upstream merges)
+- `grammars/git/data/global-options.json`, `grammars/git/data/subcommands.json` — scraped dicts
+- `grammars/git/script/scrape-git-dict.js`, `grammars/git/script/generate-subcommand-corpus.js`
 - `queries/highlights.scm`
 - `test/corpus/commands.txt` (fix existing regressions), `test/corpus/git.txt` (new hand-written cases), `test/corpus/git-subcommands.txt` (generated)
 

@@ -4,19 +4,21 @@
 
 /**
  * Generates test/corpus/git-subcommands.txt: one minimal `git <subcommand>`
- * corpus case per entry in src/git/subcommands.json, so every known
+ * corpus case per entry in grammars/git/data/subcommands.json, so every known
  * subcommand is verified to actually reach the `subcommand` field (and
  * isn't, say, accidentally shadowed by a global option or a lexer
  * collision) without hand-writing ~150 cases.
+ * Modified by AI Kilo Code, used model gti-litellm/glm-5.3-flash
+ * (relocated from script/git/ to grammars/git/script/).
  *
- * Usage: node script/git/generate-subcommand-corpus.js
+ * Usage: node grammars/git/script/generate-subcommand-corpus.js
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const SUBCOMMANDS_PATH = path.join(__dirname, '..', '..', 'src', 'git', 'subcommands.json');
-const OUTPUT_PATH = path.join(__dirname, '..', '..', 'test', 'corpus', 'git-subcommands.txt');
+const SUBCOMMANDS_PATH = path.join(__dirname, '..', 'data', 'subcommands.json');
+const OUTPUT_PATH = path.join(__dirname, '..', '..', '..', 'test', 'corpus', 'git-subcommands.txt');
 
 const TITLE_BAR = '='.repeat(31);
 const SEPARATOR = '---';

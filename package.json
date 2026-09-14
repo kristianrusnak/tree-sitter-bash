@@ -1,6 +1,6 @@
 {
   "name": "@kilocode/tree-sitter-bash-git",
-  "version": "0.25.1",
+  "version": "0.25.2",
   "description": "Bash grammar for tree-sitter",
   "repository": "https://github.com/tree-sitter/tree-sitter-bash",
   "license": "MIT",
@@ -24,6 +24,7 @@
   ],
   "files": [
     "grammar.js",
+    "grammars/**",
     "tree-sitter.json",
     "binding.gyp",
     "prebuilds/**",
@@ -52,7 +53,7 @@
   },
   "scripts": {
     "install": "node-gyp-build",
-    "lint": "eslint grammar.js",
+    "lint": "eslint grammar.js grammars/git/git-grammar.js",
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js"

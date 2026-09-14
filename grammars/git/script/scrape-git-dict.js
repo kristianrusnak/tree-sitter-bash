@@ -5,9 +5,12 @@
 /**
  * Scrapes git's global options (from git.c's handle_options) and its
  * subcommand names (from command-list.txt) at a pinned git tag, and
- * rewrites src/git/global-options.json and src/git/subcommands.json.
+ * rewrites grammars/git/data/global-options.json and
+ * grammars/git/data/subcommands.json.
+ * Modified by AI Kilo Code, used model gti-litellm/glm-5.3-flash
+ * (relocated from script/git/ to grammars/git/script/).
  *
- * Usage: node script/git/scrape-git-dict.js [--tag=vX.Y.Z]
+ * Usage: node grammars/git/script/scrape-git-dict.js [--tag=vX.Y.Z]
  * With no --tag, the latest stable tag (no rc/pre-release suffix) is used.
  */
 
@@ -17,8 +20,8 @@ const path = require('path');
 const RAW_BASE = 'https://raw.githubusercontent.com/git/git';
 const TAGS_API = 'https://api.github.com/repos/git/git/tags';
 
-const GLOBAL_OPTIONS_PATH = path.join(__dirname, '..', '..', 'src', 'git', 'global-options.json');
-const SUBCOMMANDS_PATH = path.join(__dirname, '..', '..', 'src', 'git', 'subcommands.json');
+const GLOBAL_OPTIONS_PATH = path.join(__dirname, '..', 'data', 'global-options.json');
+const SUBCOMMANDS_PATH = path.join(__dirname, '..', 'data', 'subcommands.json');
 
 async function latestStableTag() {
   const res = await fetch(TAGS_API);
